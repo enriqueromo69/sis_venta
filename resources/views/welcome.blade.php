@@ -84,7 +84,7 @@
                     Bienvenido al Sistema de Taller de 
                     <div>Programacion Web ...!</div>
                 </div>
-                <h1>Se actualizo 2021</h1>
+                <h1>Se actualizo 2020</h1>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
