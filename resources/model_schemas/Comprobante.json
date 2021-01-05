@@ -1,0 +1,42 @@
+[
+    {
+        "name": "idcomprobante",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "descrip_cmp",
+        "dbType": "string,25:nullable",
+        "htmlType": "text",
+        "validations": "nullable|string|max:25|nullable|string|max:25",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "incial",
+        "dbType": "string,5:nullable",
+        "htmlType": "text",
+        "validations": "nullable|string|max:5|nullable|string|max:5",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,Proveedor,compra"
+    }
+]
