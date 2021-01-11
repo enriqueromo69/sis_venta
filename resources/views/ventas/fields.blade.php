@@ -40,6 +40,7 @@
       <input type="text" id="idprod">
       <input type="text" id="nom_prod">
       <input type="text" id="cant">
+      <input type="text" id="prec_uni">
       <!-- finaliza los textos -->
       <button onclick="agregar()">Agrega</button>
     <table id="tabla1" class="table " >
@@ -98,15 +99,18 @@
 
     </div>
 <script>
-  var detalle =Array();
+  var detalle =Array();//este sera arrar detalle del producto 
   function agregar(){
    var id = $("#idprod").val();
    var nombre_pro = $("#nom_prod").val();
    var cantidad=$("#cant").val();
+   var prec_uni=$("#prec_uni").val();
    var producto=Object();//creamos el objeto
    producto.idproducto=id;
    producto.nombre=nombre_pro;
    producto.cantidad=cantidad;
+   producto.prec_unit=prec_uni;
+
 
    detalle.push(producto);
    console.log(producto);
@@ -117,15 +121,20 @@
 
 function guardar(){
   $.post(baseUrl('ventas/store'), {
+    //variable = el valor del  texto
+    //
                 idcomprobante: $("#idcomprobante").val(),
+                numero:$("#numero").val(),
                 idcliente: $("#idcliente").val(),
                 igv_tot:  $("#igv_tot").val(),
                 sub_tot:  $("#sub_tot").val(),
                 tot_tot:  $("#tot_tot").val(),
+                observacion:$("#observacion").val(),
                 detail: detalle
             }, function(r){
                 if(r.response) {
-                    window.location.href = baseUrl('ventas');
+                    //window.location.href = baseUrl('ventas');
+                    //alert("Se guardo satisfactoriamente".r.response);
                 } else {
                     alert('Ocurrio un error'+r.response);
                 }

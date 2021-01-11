@@ -105,30 +105,35 @@ class VentaController extends AppBaseController
         //return $this->ventaRepository->save($data);
         /**/
 
-        /*
+        /* */
         $venta= new Venta();
-        $venta->idcomprobante=$request->input("idcomprobante");
-        $venta->numero="15";
-        $venta->idcliente=1;
-        $venta->sub_tot=$request->input("sub_tot");
-        $venta->igv_tot=8.5;
-        $venta->tot_tot=24.0;
-        $venta->observacion="Na";
+        //$venta->idcomprobante=$request->input("idcomprobante");
+        $venta->idcomprobante=$request->idcomprobante;
+        $venta->numero=$request->numero;
+        $venta->idcliente=$request->idcliente;
+        $venta->sub_tot=$request->sub_tot;
+        $venta->igv_tot=$request->igv_tot;
+        $venta->tot_tot=$request->tot_tot;
+        $venta->observacion=$request->observacion;
         $venta->save();
 
-        $ventadetalle=new Ventadetalle();
-        $ventadetalle->idventa=$venta->idventa;
-        $ventadetalle->idproducto=2;
-        $ventadetalle->cantidad=2;
-        $ventadetalle->prec_unit=15.60;
-        $ventadetalle->tot_tot=31.2;
-        $ventadetalle->observacion="na";
-        $ventadetalle->save();
-        */
+        foreach($request->detail as $deta){
+            $ventadetalle=new Ventadetalle();
+            $ventadetalle->idventa=$venta->idventa;
+            $ventadetalle->idproducto=$deta['idproducto'];
+            $ventadetalle->cantidad=$deta['cantidad'];
+            $ventadetalle->prec_unit=$deta['prec_unit'];
+            $ventadetalle->tot_tot=31.2;
+            $ventadetalle->observacion="na";
+            $ventadetalle->save();
+        }
+
+        return "se creo satisfactoriamente la venta # : ".$venta->idventa;
+        /**/
 
         //dd(json_encode($request->input("detail")));
         
-        dd(json_encode($request->detail));
+        //dd(json_encode($request->detail));
 
     }
 
